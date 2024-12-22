@@ -1,42 +1,192 @@
-#root {
-  max-width: 1280px;
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  align-items: center;
+  background: #1A1A1D;
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  padding: 0.8rem;
+  width: 100%;
+}
+
+.App {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: min(76vw, 960px);
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+h1 {
+  color: #E0E0E0;
+  margin-bottom: clamp(0.8rem, 2.4vw, 1.6rem);
+  font-size: clamp(1.8rem, 4vw, 2.5rem); /* Aumentado tamaño del título */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.TodoWrapper {
+  background: #2C2C34;
+  padding: clamp(0.8rem, 2.4vw, 2rem);
+  border-radius: 0.4rem;
+  box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+  width: 100%;
+}
+
+.TodoForm {
+  display: flex;
+  width: 100%;
+  margin-bottom: 1.2rem;
+  gap: 0.8rem;
+  align-items: stretch;
+}
+
+.todo-input {
+  outline: none;
+  background: none;
+  border: 0.1rem solid #00A8E8;
+  padding: 0.6rem 0.8rem;
+  margin: 0;
+  flex: 1;
+  min-width: 160px;
+  color: #E0E0E0;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-size: clamp(1rem, 2vw, 1.2rem); /* Aumentado tamaño de fuente del input */
+  height: 2.8rem; /* Aumentada altura para acomodar la fuente más grande */
+}
+
+.todo-input::placeholder {
+  color: #E0E0E04D;
+}
+
+.todo-input:focus {
+  border-color: #00CFFD;
+  box-shadow: 0 0 0.24rem #00CFFD;
+}
+
+.todo-btn {
+  background: #00A8E8;
+  color: #E0E0E0;
+  border: none;
+  padding: 0 clamp(1rem, 2.4vw, 1.4rem);
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-size: clamp(1rem, 2vw, 1.2rem); /* Aumentado tamaño de fuente del botón */
+  height: 2.8rem; /* Aumentada altura para mantener consistencia */
+  min-width: 80px;
+  border-radius: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500; /* Añadido peso medio para mejor legibilidad */
+}
+
+.todo-btn:hover {
+  background: #00CFFD;
+  box-shadow: 0 0 0.48rem #00CFFD;
+}
+
+.Todo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #00A8E8;
+  color: #E0E0E0;
+  padding: clamp(0.8rem, 1.6vw, 1.4rem);
+  border-radius: 0.4rem;
+  margin-bottom: 0.8rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: clamp(1rem, 2vw, 1.2rem); /* Aumentado tamaño de fuente de las tareas */
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  line-height: 1.4; /* Añadido line-height para mejor legibilidad */
+}
+
+.Todo:hover {
+  background: #00CFFD;
+  transform: scale(1.01);
+}
+
+.Todo > span {
+  flex: 1;
+  text-align: left;
+  word-break: break-word;
+}
+
+.Todo > div {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.bsTrash,
+.edit-icon,
+.delete-icon {
+  color: #E0E0E0;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  filter: drop-shadow(0 0.2rem 0.4rem rgba(0, 0, 0, 0.2));
+  font-size: clamp(1.1rem, 2.2vw, 1.3rem); /* Aumentado tamaño de los iconos */
+}
+
+.incompleted {
+  color: #E0E0E0;
+  cursor: pointer;
+}
+
+.completed {
+  color: #B0B0C0;
+  text-decoration: line-through;
+  cursor: pointer;
+}
+
+.edit-icon:hover,
+.delete-icon:hover,
+.bsTrash:hover {
+  transform: scale(1.2);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .TodoWrapper {
+    margin: 0 auto;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .TodoForm {
+    flex-direction: column;
+  }
+  
+  .todo-input {
+    width: 100%;
+  }
+  
+  .todo-btn {
+    width: 100%;
+  }
+
+  .Todo {
+    font-size: clamp(0.95rem, 2vw, 1.1rem); /* Ajustado para pantallas medianas */
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media (max-width: 480px) {
+  .App {
+    width: 100%;
   }
-}
+  
+  .Todo > div {
+    width: 100%;
+    justify-content: center;
+  }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  h1 {
+    font-size: clamp(1.6rem, 3.5vw, 2rem); /* Ajustado para móviles */
+  }
 }

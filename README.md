@@ -1,50 +1,40 @@
-# React + TypeScript + Vite
+# To-Do App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+📝 Simple pero elegante aplicación de lista de tareas para mantenerse organizado.
 
-Currently, two official plugins are available:
+## Tecnologías Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **⚛️ React**: La biblioteca principal para construir la interfaz de usuario.
+- **🔑 UUID**: Para generar identificadores únicos para cada tarea.
+- **🖼️ React Icons**: Para los íconos de edición y eliminación.
 
-## Expanding the ESLint configuration
+## Paleta de Colores
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Para darle un toque moderno y elegante a la aplicación, utilicé una paleta de colores en grises y celestes:
 
-- Configure the top-level `parserOptions` property like this:
+- **🎨 Fondo Principal**: #1A1A1D
+- **🎨 Fondo de Componentes**: #2C2C34
+- **🎨 Color Principal**: #00A8E8
+- **🎨 Color Secundario**: #00CFFD
+- **🎨 Texto Principal**: #E0E0E0
+- **🎨 Texto Secundario**: #B0B0C0
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Funcionalidades Clave
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### ➕ Añadir,
+### ✏️ Editar
+### 🗑️ y Eliminar Tareas!
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Componentes Clave
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+### `ToDoWrapper`
+
+Este es el componente principal que envuelve toda la aplicación de to-do. Aquí es donde se maneja el estado de las tareas y se definen las funciones para añadir, editar, completar y eliminar tareas.
+
+### `AddToDoForm`
+
+Este componente es el formulario para añadir nuevas tareas. Utiliza un estado local para manejar el valor del input y llama a la función `addTodo` pasada como prop cuando se envía el formulario.
+
+### `Todo`
+
+Este componente representa cada tarea individual. Muestra la tarea y los íconos para editar y eliminar. También maneja el estado de edición y llama a las funciones correspondientes cuando se interactúa con los íconos.
